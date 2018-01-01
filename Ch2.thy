@@ -21,6 +21,11 @@ begin
     apply(simp add: add_swap[symmetric])
   done
 
+  lemma add_asso: "add a (add b c) = add (add a b) c"
+    apply(induction a)
+    apply(auto)
+  done
+
   fun double :: "nat \<Rightarrow> nat" where
     "double 0 = 0"
   | "double (Suc m) = Suc (Suc (double m))"
