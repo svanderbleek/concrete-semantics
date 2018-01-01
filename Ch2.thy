@@ -18,6 +18,6 @@ begin
   lemma add_comm: "add m n = add n m"
     apply(induction m)
     apply(simp add: add_zero[symmetric])
-    apply(auto)
+    apply(simp add: add_succ[symmetric])
   done
 end
