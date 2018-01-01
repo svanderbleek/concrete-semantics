@@ -10,7 +10,7 @@ begin
     apply(auto)
   done
 
-  lemma add_succ: "add (Suc m) n = add m (Suc n)"
+  lemma add_swap: "add (Suc m) n = add m (Suc n)"
     apply(induction m)
     apply(auto)
   done
@@ -18,6 +18,16 @@ begin
   lemma add_comm: "add m n = add n m"
     apply(induction m)
     apply(simp add: add_zero[symmetric])
-    apply(simp add: add_succ[symmetric])
+    apply(simp add: add_swap[symmetric])
+  done
+
+  fun double :: "nat \<Rightarrow> nat" where
+    "double 0 = 0"
+  | "double (Suc m) = Suc (Suc (double m))"
+
+  lemma doub_add: "double m = add m m"
+    apply(induction m)
+    apply(auto)
+    apply(simp add: add_swap[symmetric])
   done
 end
